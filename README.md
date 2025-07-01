@@ -445,6 +445,54 @@ Ensure project directory contains:
 zip -r kitchen_monitor_poc.zip .
 ```
 
+## Information Display
+
+### Label Format
+```
+ID: {track_id} | {state} | Status: {class_name}:{confidence}
+```
+
+### Sidebar Information
+- **READY ZONE OBJECTS**: List of objects in Ready Zone
+- **Class**: Classified class name
+- **State**: Current state
+- **Dwell**: Time spent in zone (seconds)
+- **Empty Dwell**: Time empty object spent in Ready Zone (if any)
+
+## Troubleshooting
+
+### Common Issues
+
+#### 1. Cannot open video
+- Check video path in `--video` argument
+- Ensure video file exists and is readable
+
+#### 2. Model cannot load
+- Check model path in `--detection-model` and `--classification-model`
+- Ensure model file (.pt) exists
+
+#### 3. Feedback cannot save
+- Check write permissions for `feedback_data/` directory
+- Ensure sufficient disk space
+
+#### 4. GUI not displaying
+- On Linux: Install X11 forwarding
+- On Windows: Use WSL2 or native Python
+
+### Performance Tips
+- Reduce **FrameSkip** to increase FPS
+- Reduce **Confidence** to detect more objects
+- Increase **IoU** to reduce false positives
+- Use GPU if available
+
+## Support
+
+If you encounter issues, please:
+1. Check logs in terminal
+2. Ensure all dependencies are installed
+3. Check configuration in `config.yml`
+4. Contact team for support
+
 ## Contact
 
 - **Author**: Kitchen Monitor Team
