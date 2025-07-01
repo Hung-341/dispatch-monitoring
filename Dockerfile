@@ -12,7 +12,6 @@ RUN apt-get update && apt-get install -y \
     libxext6 \
     libxrender-dev \
     libgomp1 \
-    libgthread-2.0-0 \
     libfontconfig1 \
     libgtk-3-0 \
     libavcodec-dev \
@@ -41,7 +40,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app-menu.py .
 COPY utils.py .
 COPY config.yml .
-COPY instruction.md .
 
 # Create necessary directories
 RUN mkdir -p models videos feedback_data data

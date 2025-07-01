@@ -502,3 +502,89 @@ If you encounter issues, please:
 ---
 
 **Note**: Ensure sufficient GPU memory when training models. With YOLOv8n, 4GB VRAM is sufficient for most cases.
+
+---
+
+## 4. Usage Guide
+
+### Run Application
+- **Local:**  
+  `python app-menu.py`
+- **Docker Compose:**  
+  `docker-compose up --build`
+
+### Web/GUI Interface
+- Access via exposed port (default: `localhost:8080` if web interface is enabled).
+
+### Managing Models & Data
+- Place trained models in `models/`
+- Input videos in `videos/`
+- Feedback and training data in `feedback_data/` and `data/`
+
+---
+
+## 5. Technical Details
+
+### Object Detection & Tracking
+- **Detection:** YOLOv8
+- **Tracking:** Custom DeepSORT in `utils.py`
+- **Classification:** Status (empty, not-empty, kakigori)
+
+### Zone & State Management
+- Real-time management of preparation and ready zones
+- Object state tracking across frames
+
+### Optional: BoxMOT Integration
+- See [BoxMOT](https://github.com/mikel-brostrom/boxmot) for advanced tracking
+
+---
+
+## 6. Model Improvement with User Feedback
+
+- **Human-in-the-Loop (HITL):**  
+  User feedback is collected and stored in `feedback_data/` for model retraining.
+- **Feedback Logging:**  
+  All feedback is logged in `feedback_log.csv`.
+
+---
+
+## 7. Model Training & Update
+
+### Training Detection Model
+- Prepare data as described above
+- Use YOLOv8 for training:
+```bash
+# Example (adjust paths as needed)
+yolo detect train data=data/detection/data.yaml model=yolov8n.pt
+```
+
+### Training Classification Model
+- Organize images in `data/classification/`
+- Use your preferred classification training pipeline
+
+### Updating Models
+- Place new models in `models/` and restart the service
+
+---
+
+## 8. Contribution & Development
+
+### How to Contribute
+- Fork the repository, create a feature branch, and submit a pull request.
+- Please follow the code style and add clear commit messages.
+
+### Issue Reporting
+- Use GitHub Issues for bug reports and feature requests.
+
+---
+
+## 9. Contact & License
+
+**Team:** Hung-341  
+**Contact:** hunglg.341@gmail.com
+
+This project is licensed under the MIT License.
+
+---
+
+*For more details, please refer to the comments and docstrings in the source code.*
