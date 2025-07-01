@@ -41,11 +41,12 @@ COPY app-menu.py .
 COPY utils.py .
 COPY config.yml .
 
-# Copy models directory if it exists
+# Copy models and runs directories (now tracked by git)
 COPY models/ ./models/
+COPY runs/ ./runs/
 
 # Create necessary directories
-RUN mkdir -p models videos feedback_data data
+RUN mkdir -p videos feedback_data data
 
 # Set environment variables
 ENV PYTHONPATH=/app

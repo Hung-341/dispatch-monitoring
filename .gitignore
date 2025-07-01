@@ -154,8 +154,13 @@ Thumbs.db
 #            PROJECT SPECIFIC IGNORES
 # ======================================================
 
-# Model files (can be large)
-models/
+# Model files (can be large) - NOT ignoring models folder anymore
+# models/*.pt
+# models/*.pth
+# models/*.onnx
+# models/*.engine
+# models/*.tflite
+# models/*.pb
 
 # Video files (can be large)
 videos/*.mp4
@@ -167,7 +172,7 @@ videos/*.flv
 videos/*.webm
 
 # Training outputs and logs
-runs/
+# runs/ - NOT ignoring runs folder anymore
 *.log
 logs/
 tensorboard_logs/
