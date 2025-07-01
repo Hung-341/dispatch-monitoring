@@ -155,12 +155,7 @@ Thumbs.db
 # ======================================================
 
 # Model files (can be large)
-models/*.pt
-models/*.pth
-models/*.onnx
-models/*.engine
-models/*.tflite
-models/*.pb
+models/
 
 # Video files (can be large)
 videos/*.mp4
@@ -172,7 +167,7 @@ videos/*.flv
 videos/*.webm
 
 # Training outputs and logs
-# runs/
+runs/
 *.log
 logs/
 tensorboard_logs/

@@ -41,6 +41,9 @@ COPY app-menu.py .
 COPY utils.py .
 COPY config.yml .
 
+# Copy models directory if it exists
+COPY models/ ./models/
+
 # Create necessary directories
 RUN mkdir -p models videos feedback_data data
 
