@@ -191,9 +191,6 @@ results/
 *.mp4
 *.avi
 *.mov
-*.jpg
-*.jpeg
-*.png
 *.bmp
 
 # Temporary files
@@ -317,3 +314,8 @@ credentials/
 !*/feedback_data/
 !*/models/
 !*/videos/
+
+# Allow PNG and JPG in runs folder
+!runs/**/*.png
+!runs/**/*.jpg
+!runs/**/*.jpeg
