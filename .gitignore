@@ -172,7 +172,7 @@ videos/*.flv
 videos/*.webm
 
 # Training outputs and logs
-runs/
+# runs/
 *.log
 logs/
 tensorboard_logs/
