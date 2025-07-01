@@ -495,8 +495,8 @@ If you encounter issues, please:
 
 ## Contact
 
-- **Author**: Kitchen Monitor Team
-- **Email**: [your-email@example.com]
+- **Author**: Hung-341
+- **Email**: [hunglg.341@gmail.com]
 - **Project**: Intelligent Kitchen Dispatch Monitor
 
 ---
