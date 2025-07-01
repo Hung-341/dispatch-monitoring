@@ -583,8 +583,6 @@ yolo detect train data=data/detection/data.yaml model=yolov8n.pt
 **Team:** Hung-341  
 **Contact:** hunglg.341@gmail.com
 
-This project is licensed under the MIT License.
-
 ---
 
 *For more details, please refer to the comments and docstrings in the source code.*
