@@ -1,6 +1,11 @@
+# ======================================================
+#            Kitchen Monitor - Git Ignore Rules
+# ======================================================
+
+# Python
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[codz]
+*.py[cod]
 *$py.class
 
 # C extensions
@@ -20,6 +25,7 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
 share/python-wheels/
 *.egg-info/
 .installed.cfg
@@ -27,8 +33,8 @@ share/python-wheels/
 MANIFEST
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+# Usually these files are written by a python script from a template
+# before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
 
@@ -46,33 +52,31 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *.cover
-*.py.cover
+*.py,cover
 .hypothesis/
 .pytest_cache/
-cover/
 
 # Translations
 *.mo
 *.pot
 
-# Django stuff:
+# Django stuff
 *.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
 
-# Flask stuff:
+# Flask stuff
 instance/
 .webassets-cache
 
-# Scrapy stuff:
+# Scrapy stuff
 .scrapy
 
 # Sphinx documentation
 docs/_build/
 
 # PyBuilder
-.pybuilder/
 target/
 
 # Jupyter Notebook
@@ -83,48 +87,16 @@ profile_default/
 ipython_config.py
 
 # pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-# .python-version
+.python-version
 
 # pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
+# According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+# However, in case of collaboration, if having platform-specific dependencies or dependencies
+# having no cross-platform support, pipenv may install dependencies that don't work, or not
+# install all needed dependencies.
 #Pipfile.lock
 
-# UV
-#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#uv.lock
-
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-#poetry.lock
-#poetry.toml
-
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#   pdm recommends including project-wide configuration in pdm.toml, but excluding .pdm-python.
-#   https://pdm-project.org/en/latest/usage/project/#working-with-version-control
-#pdm.lock
-#pdm.toml
-.pdm-python
-.pdm-build/
-
-# pixi
-#   Similar to Pipfile.lock, it is generally recommended to include pixi.lock in version control.
-#pixi.lock
-#   Pixi creates a virtual environment in the .pixi directory, just like venv module creates one
-#   in the .venv directory. It is recommended not to include this directory in version control.
-.pixi
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
 __pypackages__/
 
 # Celery stuff
@@ -136,7 +108,6 @@ celerybeat.pid
 
 # Environments
 .env
-.envrc
 .venv
 env/
 venv/
@@ -162,46 +133,187 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# pytype static type analyzer
-.pytype/
+# IDE and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.cursor/
 
-# Cython debug symbols
-cython_debug/
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
+# ======================================================
+#            PROJECT SPECIFIC IGNORES
+# ======================================================
 
-# Abstra
-# Abstra is an AI-powered process automation framework.
-# Ignore directories containing user credentials, local state, and settings.
-# Learn more at https://abstra.io/docs
-.abstra/
+# Model files (can be large)
+models/*.pt
+models/*.pth
+models/*.onnx
+models/*.engine
+models/*.tflite
+models/*.pb
 
-# Visual Studio Code
-#  Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
-#  that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
-#  and can be added to the global gitignore or merged into this file. However, if you prefer, 
-#  you could uncomment the following to ignore the entire vscode folder
-# .vscode/
+# Video files (can be large)
+videos/*.mp4
+videos/*.avi
+videos/*.mov
+videos/*.mkv
+videos/*.wmv
+videos/*.flv
+videos/*.webm
 
-# Ruff stuff:
-.ruff_cache/
+# Training outputs and logs
+runs/
+*.log
+logs/
+tensorboard_logs/
 
-# PyPI configuration file
-.pypirc
+# Feedback data (contains user corrections)
+feedback_data/
+!feedback_data/.gitkeep
 
-# Cursor
-#  Cursor is an AI-powered code editor. `.cursorignore` specifies files/directories to
-#  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
-#  refer to https://docs.cursor.com/context/ignore-files
-.cursorignore
-.cursorindexingignore
+# Training data (can be large)
+data/
+!data/.gitkeep
 
-# Marimo
-marimo/_static/
-marimo/_lsp/
-__marimo__/
+# Output files
+output/
+results/
+*.mp4
+*.avi
+*.mov
+*.jpg
+*.jpeg
+*.png
+*.bmp
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+*.temp
+
+# Configuration files with sensitive data
+.env
+.env.local
+.env.production
+config_local.yml
+config_secret.yml
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Cache directories
+.cache/
+cache/
+
+# YOLO specific
+*.weights
+*.cfg
+
+# Jupyter notebook outputs
+*.ipynb
+
+# MLflow
+mlruns/
+
+# Weights & Biases
+wandb/
+
+# Comet ML
+comet-ml/
+
+# ClearML
+clearml.conf
+
+# MLflow
+mlflow/
+
+# TensorBoard
+tensorboard_logs/
+
+# Model versioning
+model_registry/
+
+# ======================================================
+#            DEVELOPMENT TOOLS
+# ======================================================
+
+# Pre-commit
+.pre-commit-config.yaml
+
+# Black
+.black.toml
+
+# Flake8
+.flake8
+
+# MyPy
+mypy.ini
+
+# Coverage
+.coveragerc
+
+# Tox
+tox.ini
+
+# Pytest
+pytest.ini
+
+# ======================================================
+#            SECURITY
+# ======================================================
+
+# API keys and secrets
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# ======================================================
+#            PERFORMANCE
+# ======================================================
+
+# Large files that should not be in git
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Compiled files
+*.pyc
+*.pyo
+*.pyd
+
+# ======================================================
+#            KEEP FILES
+# ======================================================
+
+# Keep empty directories
+!*/__pycache__/
+!*/data/
+!*/feedback_data/
+!*/models/
+!*/videos/

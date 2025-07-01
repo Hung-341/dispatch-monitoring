@@ -1,0 +1,68 @@
+# ======================================================
+#            Kitchen Monitor Configuration
+# ======================================================
+# Color palette optimized: no gray colors, focus on clarity.
+# Main color tones: Teal (Blue-green) & Amber (Yellow-orange)
+
+# --- Model Paths ---
+models:
+  detection: "models/best-detect.pt"
+  classification: "models/best-cls.pt"
+
+# --- Detection & Tracking Settings ---
+detection:
+  conf_threshold: 0.5
+  iou_threshold: 0.45
+  cls_conf_threshold: 0.5
+
+tracking:
+  max_age: 60
+  min_hits: 2
+  iou_threshold: 0.2
+
+# --- Zone Definitions ---
+red_zone:
+  points:
+    - [100, 100]
+    - [300, 100]
+    - [300, 300]
+    - [100, 300]
+  dwell_time_threshold: 30
+
+yellow_zone:
+  points:
+    - [50, 50]
+    - [350, 50]
+    - [350, 350]
+    - [50, 350]
+
+# ======================================================
+#            VISUALIZATION SETTINGS
+# ======================================================
+# New color palette - No gray colors (BGR format: Blue, Green, Red)
+visualization:
+  # --- UI & General Colors ---
+  bg_dark: [40, 30, 25]            # Deep Blue-Charcoal
+  text_light: [255, 255, 255]       # Pure white, maximum contrast
+  track_thumb_color: [255, 191, 0]  # Bright blue for sliders
+  
+  # --- Zone Colors ---
+  red_zone_color: [13, 148, 252]     # Amber (Yellow-orange)
+  yellow_zone_color: [204, 182, 0]   # Teal (Blue-green)
+  
+  # --- Object State Colors ---
+  preparing_color: [204, 182, 0]     # Teal
+  ready_color: [50, 205, 153]        # Green-Mint
+  served_color: [13, 148, 252]       # Amber
+  removed_color: [140, 90, 40]       # Muted Slate Blue - REPLACES GRAY
+  alert_color: [42, 42, 255]         # Bright red for alerts
+  
+  # --- Line & Bbox Settings ---
+  line_thickness: 2
+  bbox_thickness: 2
+
+# Logging
+logging:
+  level: "INFO"
+  save_logs: false
+  log_file: "kitchen_monitor.log"

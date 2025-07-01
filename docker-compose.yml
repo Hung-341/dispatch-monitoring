@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  kitchen-monitor:
+    build: .
+    container_name: kitchen-monitor-app
+    volumes:
+      # Mount models directory
+      - ./models:/app/models
+      # Mount videos directory  
+      - ./videos:/app/videos
+      # Mount feedback data directory
+      - ./feedback_data:/app/feedback_data
+      # Mount config file
+      - ./config.yml:/app/config.yml
+      # Mount data directory for training
+      - ./data:/app/data
+    environment:
+      - DISPLAY=${DISPLAY}
+      - PYTHONPATH=/app
+    ports:
+      - "8080:8080"
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    # For GUI applications on Linux
+    network_mode: host
+    privileged: true 
