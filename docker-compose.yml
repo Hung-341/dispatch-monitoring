@@ -10,7 +10,7 @@ services:
       # Mount runs directory for training outputs
       - ./runs:/app/runs
       # Mount videos directory  
-      - ./videos:/app/videos
+      # - ./videos:/app/videos
       # Mount feedback data directory
       - ./feedback_data:/app/feedback_data
       # Mount config file
