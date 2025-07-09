@@ -505,6 +505,218 @@ If you encounter issues, please:
 
 ---
 
+## Development & Code Quality
+
+### Development Setup
+
+#### 1. Install Development Dependencies
+```bash
+# Install all development tools
+make install-dev
+
+# Or manually
+pip install -r requirements.txt
+pip install -e ".[dev]"
+pre-commit install
+```
+
+#### 2. Code Quality Tools
+
+**Formatting:**
+```bash
+# Format code with Black
+make format
+# or
+black .
+isort .
+```
+
+**Linting:**
+```bash
+# Run linting checks
+make lint
+# or
+flake8 .
+```
+
+**Type Checking:**
+```bash
+# Run type checking
+make type-check
+# or
+mypy utils.py --ignore-missing-imports
+```
+
+**Security Checks:**
+```bash
+# Run security analysis
+make security-check
+# or
+bandit -r . -f json -o bandit-report.json
+```
+
+#### 3. Testing
+
+**Run Tests:**
+```bash
+# Run all tests with coverage
+make test
+
+# Run tests in watch mode
+make test-watch
+
+# Run specific test file
+pytest tests/test_utils.py -v
+```
+
+**Test Coverage:**
+- Coverage reports are generated in `htmlcov/`
+- Open `htmlcov/index.html` to view detailed coverage
+
+#### 4. Pre-commit Hooks
+
+The project uses pre-commit hooks for automated code quality checks:
+
+```bash
+# Install pre-commit hooks
+pre-commit install
+
+# Run all hooks on all files
+make pre-commit-all
+# or
+pre-commit run --all-files
+```
+
+#### 5. Development Workflow
+
+**Complete Quality Check:**
+```bash
+# Run all quality checks
+make quality
+```
+
+**Clean Development Environment:**
+```bash
+# Clean up cache and build files
+make clean
+```
+
+### CI/CD Pipeline
+
+The project includes a comprehensive CI/CD pipeline with GitHub Actions:
+
+- **Automated Testing**: Runs on Python 3.8, 3.9, and 3.10
+- **Code Quality**: Linting, type checking, and security scanning
+- **Docker Build**: Automated Docker image building and pushing
+- **Deployment**: Staging and production deployment automation
+
+**Pipeline Stages:**
+1. **Test**: Unit tests, linting, type checking
+2. **Build**: Docker image building
+3. **Security**: Security vulnerability scanning
+4. **Deploy**: Automated deployment to staging/production
+
+### Project Structure (Updated)
+
+```
+dispatch-monitor/
+├── app-menu.py                 # Main application (647 lines)
+├── utils.py                    # Custom DeepSORT implementation (219 lines)
+├── config.yml                  # Configuration (68 lines)
+├── requirements.txt            # Dependencies with version pinning
+├── pyproject.toml             # Modern Python project configuration
+├── Makefile                   # Development commands
+├── .pre-commit-config.yaml    # Pre-commit hooks configuration
+├── Dockerfile                  # Containerization (59 lines)
+├── docker-compose.yml          # Orchestration (30 lines)
+├── README.md                   # Documentation (589 lines)
+├── .github/workflows/         # CI/CD pipeline
+│   └── ci.yml
+├── tests/                     # Unit tests
+│   ├── __init__.py
+│   └── test_utils.py
+├── models/                     # ML models
+├── runs/                       # Training outputs
+└── feedback_data/              # HITL data
+```
+
+### Code Standards
+
+#### Type Hints
+- All functions include comprehensive type hints
+- Uses `numpy.typing` for NumPy array types
+- Optional parameters properly typed
+
+#### Documentation
+- All functions have detailed docstrings
+- Follows Google docstring format
+- Includes parameter descriptions and return types
+
+#### Testing
+- Comprehensive unit tests for all utility functions
+- Test coverage for edge cases
+- Mock objects for external dependencies
+
+#### Code Style
+- Black formatting (127 character line length)
+- Flake8 linting with custom configuration
+- Import sorting with isort
+
+### Performance Monitoring
+
+#### Memory Usage
+- Monitor memory usage during video processing
+- Optimize frame skipping for performance
+- GPU memory management for model inference
+
+#### Profiling
+```bash
+# Profile application performance
+python -m cProfile -o profile.stats app-menu.py
+python -c "import pstats; pstats.Stats('profile.stats').sort_stats('cumulative').print_stats(20)"
+```
+
+### Security Considerations
+
+#### Input Validation
+- Validate all user inputs and configuration files
+- Sanitize file paths and model inputs
+- Implement proper error handling
+
+#### Dependencies
+- Regular security updates for all dependencies
+- Automated vulnerability scanning with Bandit
+- Pinned dependency versions for reproducibility
+
+### Contributing Guidelines
+
+#### Code Review Process
+1. Fork the repository
+2. Create a feature branch
+3. Make changes with proper tests
+4. Run quality checks: `make quality`
+5. Submit pull request
+
+#### Commit Message Format
+```
+type(scope): description
+
+[optional body]
+
+[optional footer]
+```
+
+**Types:** feat, fix, docs, style, refactor, test, chore
+
+#### Pull Request Checklist
+- [ ] Code follows style guidelines
+- [ ] Tests pass and coverage is maintained
+- [ ] Documentation is updated
+- [ ] Type hints are added
+- [ ] Security checks pass
+
+---
+
 ## 4. Usage Guide
 
 ### Run Application

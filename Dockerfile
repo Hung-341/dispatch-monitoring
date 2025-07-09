@@ -1,11 +1,13 @@
-# Use Python 3.9 slim image
-FROM python:3.9-slim
+# syntax=docker/dockerfile:1
+
+# --- Base image ---
+FROM python:3.9-slim AS base
 
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
+# Install system dependencies (minimal for OpenCV and PyTorch)
+RUN apt-get update && apt-get install -y --no-install-recommends \
     libgl1-mesa-glx \
     libglib2.0-0 \
     libsm6 \
@@ -30,30 +32,32 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements first for better caching
-COPY requirements.txt .
+# --- Install Python dependencies first for better caching ---
+COPY requirements.txt ./
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-# Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy application files
-COPY app-menu.py .
-COPY utils.py .
-COPY config.yml .
-
-# Copy models and runs directories (now tracked by git)
+# --- Copy only the application code ---
+COPY app-menu.py ./
+COPY utils.py ./
+COPY config.yml ./
 COPY models/ ./models/
 COPY runs/ ./runs/
 
-# Create necessary directories
+# --- Create necessary directories ---
 RUN mkdir -p videos feedback_data data
 
-# Set environment variables
+# --- Set environment variables ---
 ENV PYTHONPATH=/app
 ENV DISPLAY=:99
 
-# Expose port (if needed for web interface)
+# --- Use a non-root user for security ---
+RUN useradd -m appuser && chown -R appuser /app
+USER appuser
+
+# --- Expose port if needed for web interface ---
 EXPOSE 8080
 
-# Default command
-CMD ["python", "app-menu.py"] 
+# --- Entrypoint and default command ---
+ENTRYPOINT ["python"]
+CMD ["app-menu.py"] 

@@ -1,22 +1,29 @@
 # Core dependencies
-opencv-python
-numpy
-Pillow
-PyYAML
+opencv-python==4.8.1.78
+numpy==1.24.3
+Pillow==10.0.1
+PyYAML==6.0.1
 
 # YOLO and deep learning
-ultralytics
-torch
-torchvision
+ultralytics==8.0.196
+torch==2.0.1
+torchvision==0.15.2
 
 # Tracking
-filterpy
-scipy
+filterpy==1.4.5
+scipy==1.11.1
 
 # Additional utilities
-matplotlib
-seaborn
-pandas
+matplotlib==3.7.2
+seaborn==0.12.2
+pandas==2.0.3
 
 # Optional: for better performance
-opencv-contrib-python
+opencv-contrib-python==4.8.1.78
+
+# Development and testing dependencies
+pytest==7.4.0
+pytest-cov==4.1.0
+black==23.7.0
+flake8==6.0.0
+mypy==1.5.1
